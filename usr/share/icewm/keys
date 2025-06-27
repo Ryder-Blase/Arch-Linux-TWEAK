@@ -16,6 +16,7 @@ key "Super+V"		    virt-manager
 key "Super+G"		    chromium
 key "Super+L"		    looking-glass-client -F
 key "Super+D"		    dmenu_run
+key "Super+Q"               xdotool getactivewindow windowkill
 
 key "Super+KP_Subtract"     amixer sset Master 5%-
 key "Super+KP_Add"          amixer sset Master 5%+
