@@ -221,7 +221,7 @@ _bore_min_base_slice_ns="2000000"
 _random_trust_cpu="true"
 
 # Timer frequency - "100" "250" "300" "500" "750" "1000" - More options available in kernel config prompt when left empty depending on selected cpusched with the default option pointed with a ">" (100 for muqss and 1000 for other cpu schedulers)
-_timer_freq="100"
+_timer_freq="500"
 
 # Default CPU governor - "performance", "ondemand", "schedutil" or leave empty for default (schedutil)
 _default_cpu_gov="performance"
