@@ -1,5 +1,4 @@
 MESA_NO_ERROR=1
-MESA_SHADER_CACHE=1
 MESA_GLTHREAD=true
 vblank_mode=0
 DRI_NO_MSAA=1
@@ -34,9 +33,6 @@ PROTON_NO_XIM="1"
 WINENTSYNC="1"
 MESA_SHADER_CACHE="1"
 MESA_SHADER_CACHE_DISABLE="false"
-MESA_SHADER_CACHE_MAX_SIZE="2097152K"
-MESA_DISK_CACHE_SINGLE_FILE="true"
-MESA_SHADER_CACHE_DIR="/home/$USER/.cache/mesa-shader-cache"
 MESA_VK_WSI_PRESENT_MODE="immediate"
 MESA_EXTENSION_OVERRIDE="-GL_EXT_texture_filter_anisotropic"
 DXVK_CONFIG="dxgi.syncInterval=0;dxgi.maxFrameLatency=1;dxgi.numBackBuffers=2;d3d9.presentInterval=0;d3d9.maxFrameLatency=1;d3d9.numBackBuffers=2;d3d11.maxTessFactor=8;d3d11.relaxedBarriers=True;d3d11.ignoreGraphicsBarriers=True;d3d11.samplerAnisotropy=0;d3d9.samplerAnisotropy=0;d3d11.invariantPosition=False;d3d9.invariantPosition=False;d3d9.floatEmulation=True;d3d9.textureMemory=0;d3d11.maxImplicitDiscardSize=4096"
@@ -49,8 +45,6 @@ PROTON_ENABLE_HDR=1
 __GL_THREADED_OPTIMIZATIONS="1"
 __GL_YIELD="NOTHING"
 __GL_SHADER_DISK_CACHE="1"
-__GL_SHADER_DISK_CACHE_SIZE="2147483648"
-__GL_SHADER_DISK_CACHE_PATH="/home/$USER/.cache/nv-shader-cache"
 __GL_SYNC_TO_VBLANK="0"
 __GL_MaxFramesAllowed="1"
 __GL_FSAA_MODE="0"
