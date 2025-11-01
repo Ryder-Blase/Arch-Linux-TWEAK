@@ -17,7 +17,7 @@
 </keybind>
 
 <keybind key="W-e">
-  <action name="Execute" command="dolphin" />
+  <action name="Execute" command="pcmanfm" />
 </keybind>
 <keybind key="W-v">
   <action name="Execute" command="virt-manager" />
@@ -51,15 +51,24 @@
   </keyboard>
  <libinput>
     <device category="touchpad">
-      <pointerSpeed>0.7</pointerSpeed>
+      <pointerSpeed>0.85</pointerSpeed>
       <accelProfile>adaptive</accelProfile>
       <tap>yes</tap>
       <naturalScroll>yes</naturalScroll>
     </device>
   </libinput>
 <theme>
-  <cornerRadius>12</cornerRadius>
-    <dropShadows>yes</dropShadows>
+<cornerRadius>12</cornerRadius>
+<name>MyTheme</name>
 </theme>
-
+#<core>
+  <decoration>server</decoration>
+  <gap>0</gap>
+  <adaptiveSync>no</adaptiveSync>
+  <allowTearing>yes</allowTearing>
+  <autoEnableOutputs>yes</autoEnableOutputs>
+  <reuseOutputMode>no</reuseOutputMode>
+  <xwaylandPersistence>no</xwaylandPersistence>
+  <primarySelection>yes</primarySelection>
+  </core>
 </labwc_config>

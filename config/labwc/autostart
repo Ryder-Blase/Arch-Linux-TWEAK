@@ -1,4 +1,6 @@
-wlr-randr --output eDP-1 --scale 1.5 >/dev/null 2>&1 &
+wlr-randr --output eDP-1 --scale 2 >/dev/null 2>&1 &
 blueman-applet >/dev/null 2>&1 &
 nm-applet >/dev/null 2>&1 &
-swaybg -i /home/linux/Images/Wallpaper/Surface_Laptop_3_03.jpg >/dev/null 2>&1 &
+swaybg -i ~/Images/wallpaper.jpg >/dev/null 2>&1 &
+XDG_MENU_PREFIX=arch- kbuildsycoca6 >/dev/null 2>&1 &
+pkill nm-applet
