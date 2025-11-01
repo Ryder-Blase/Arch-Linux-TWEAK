@@ -1,0 +1,18 @@
+window.active.title.bg: Solid
+window.active.title.bg.color: #00000090
+window.active.label.text.color: #ffffff
+window.active.label.text.font: "Noto Sans SemiBold-10"
+
+window.active.button.unpressed.bg: Flat
+window.active.button.unpressed.bg.color: #00000000
+window.active.button.unpressed.image.color: #ffffff
+window.active.button.hover.bg.color: #ffffff20
+window.active.button.hover.image.color: #ffffff
+window.active.button.pressed.bg.color: #ff000020
+window.active.button.pressed.image.color: #ff5555
+
+window.inactive.title.bg: Solid
+window.inactive.title.bg.color: #00000040
+window.inactive.label.text.color: #aaaaaa
+window.inactive.label.text.font: "Noto Sans-10"
+window.inactive.button.unpressed.image.color: #777777
