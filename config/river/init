@@ -1,0 +1,126 @@
+#!/bin/sh
+
+# Variables
+mod="Super"
+term="foot"
+
+# Set background wallpaper
+swaybg -i ~/Images/wallpaper.jpg -m fill &
+
+# Configure keyboard layout
+riverctl keyboard-layout fr
+
+# Configure touchpad
+riverctl input pointer-1267-13111-ELAN0A05:00_04F3:3337_Touchpad tap enabled
+riverctl input pointer-1267-13111-ELAN0A05:00_04F3:3337_Touchpad natural-scroll enabled
+riverctl input pointer-1267-13111-ELAN0A05:00_04F3:3337_Touchpad accel-profile adaptive
+riverctl input pointer-1267-13111-ELAN0A05:00_04F3:3337_Touchpad pointer-accel 1.0
+
+# Set Super as the modifier for move/resize
+riverctl float-filter-add app-id "float"
+riverctl float-filter-add title "popup"
+
+# Autostart applications
+wlr-randr --output eDP-1 --scale 1.5 >/dev/null 2>&1 &
+blueman-applet >/dev/null 2>&1 &
+nm-applet >/dev/null 2>&1 &
+XDG_MENU_PREFIX=arch- kbuildsycoca6 >/dev/null 2>&1 &
+
+# Start the default layout generator (rivertile)
+rivertile -view-padding 6 -outer-padding 6 &
+
+# Key bindings
+riverctl map normal $mod Return spawn $term
+riverctl map normal $mod D spawn "rofi -show drun"
+riverctl map normal $mod Q close
+riverctl map normal $mod F zoom
+riverctl map normal $mod T toggle-float
+riverctl map normal $mod+Shift F toggle-fullscreen
+riverctl map normal $mod E spawn pcmanfm
+riverctl map normal $mod V spawn virt-manager
+riverctl map normal $mod C spawn code
+riverctl map normal $mod L spawn "swaylock -c 000000"
+
+# Screenshots
+riverctl map normal $mod S spawn 'grim -g "$(slurp)" ~/Images/screenshot-$(date +%Y-%m-%d-%H%M%S).png'
+
+# Focus movement
+riverctl map normal $mod Left focus-view left
+riverctl map normal $mod Down focus-view down
+riverctl map normal $mod Up focus-view up
+riverctl map normal $mod Right focus-view right
+
+# Move windows
+riverctl map normal $mod+Shift Left move left 100
+riverctl map normal $mod+Shift Down move down 100
+riverctl map normal $mod+Shift Up move up 100
+riverctl map normal $mod+Shift Right move right 100
+
+# Snap windows to edges
+riverctl map normal $mod+Control Left snap left
+riverctl map normal $mod+Control Down snap down
+riverctl map normal $mod+Control Up snap up
+riverctl map normal $mod+Control Right snap right
+
+# Resize windows
+riverctl map normal $mod+Alt Left resize horizontal -100
+riverctl map normal $mod+Alt Down resize vertical 100
+riverctl map normal $mod+Alt Up resize vertical -100
+riverctl map normal $mod+Alt Right resize horizontal 100
+
+# Split orientation
+riverctl map normal $mod H send-layout-cmd rivertile "main-location left"
+riverctl map normal $mod B send-layout-cmd rivertile "main-location bottom"
+
+# Layout commands
+#riverctl map normal $mod T send-layout-cmd rivertile "main-count +1"
+riverctl map normal $mod+Shift T send-layout-cmd rivertile "main-count -1"
+
+# Workspaces (tags in River)
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    riverctl map normal $mod $i set-focused-tags $tags
+    riverctl map normal $mod+Shift $i set-view-tags $tags
+    riverctl map normal $mod+Control $i toggle-focused-tags $tags
+    riverctl map normal $mod+Shift+Control $i toggle-view-tags $tags
+done
+
+# Special workspace 0 (tag 10)
+all_tags=$(((1 << 32) - 1))
+riverctl map normal $mod 0 set-focused-tags $all_tags
+riverctl map normal $mod+Shift 0 set-view-tags $all_tags
+
+# Brightness control
+riverctl map normal None XF86MonBrightnessUp spawn 'brightnessctl -e set +5%'
+riverctl map normal None XF86MonBrightnessDown spawn 'brightnessctl -e set 5%-'
+
+# Volume control
+riverctl map normal None XF86AudioRaiseVolume spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
+riverctl map normal None XF86AudioLowerVolume spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
+riverctl map normal None XF86AudioMute spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+
+# Mouse bindings
+riverctl map-pointer normal $mod BTN_LEFT move-view
+riverctl map-pointer normal $mod BTN_RIGHT resize-view
+riverctl map-pointer normal $mod BTN_MIDDLE toggle-float
+
+# Focus follows cursor
+riverctl focus-follows-cursor normal
+
+# Set border color and width
+riverctl border-color-focused 0xA65D2A
+riverctl border-color-unfocused 0x586e75
+riverctl border-width 2
+
+# Set default layout
+riverctl default-layout rivertile
+
+# Exit River
+riverctl map normal $mod+Shift E exit
+
+# Reload River (River doesn't have reload, so we restart)
+riverctl map normal $mod+Shift R spawn 'pkill river && river'
+
+# Start waybar
+waybar &
