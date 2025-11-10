@@ -102,7 +102,7 @@
   <windowRules>
     <windowRule identifier="*">
       <action name="AutoPlace"/>
-      <fixedPosition>yes</fixedPosition>
+      <fixedPosition>no</fixedPosition>
     </windowRule>
   </windowRules>
 
