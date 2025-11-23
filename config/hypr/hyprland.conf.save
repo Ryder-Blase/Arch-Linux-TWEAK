@@ -2,18 +2,16 @@
 monitor=eDP-1,preferred,0x0,1.6666666
 
 # ----------------- Startup -----------------
-#exec-once = mpvpaper -o "no-audio --loop-playlist shuffle" ALL /home/linux/Vidéos/snowfall-in-forest.3840x2160.mp4 -o "fs=yes --no-keepaspect --video-unscaled=no --vf=scale=1920:1200"
-exec-once = swaybg -i ~/Images/wallpaper.png -m fill
-exec-once=hyprctl setcursor elementary 60
+exec-once = swaybg -i ~/Images/cHw2ing.png -m fill
 exec-once = blueman-applet
 exec-once = nm-applet
 exec-once = XDG_MENU_PREFIX=arch- kbuildsycoca6
 exec-once = mako
 
 # ----------------- Environment -----------------
-env = XCURSOR_THEME,Breeze
 env = XCURSOR_SIZE,24
 env = QT_QPA_PLATFORMTHEME,qt5ct
+
 # ----------------- Render / Compositor -----------------
 render {
     new_render_scheduling = true
@@ -22,7 +20,7 @@ render {
 misc {
     disable_hyprland_logo    = true
     disable_splash_rendering = true
-    vfr = true
+    vfr = false
     vrr = 0
 }
 
@@ -50,32 +48,32 @@ input {
 
     sensitivity     = 1
     accel_profile   = adaptive
+
 }
 
-
 gestures {
-        workspace_swipe_invert = true
-        workspace_swipe_distance = 700
-        gesture= 3, horizontal, workspace
-        gesture = 3, swipe, mod: SUPER, resize
-        gesture = 4, pinch, fullscreen
-	 }
+	workspace_swipe_invert = true
+	workspace_swipe_distance = 700
+	gesture= 3, horizontal, workspace
+	gesture = 3, swipe, mod: SUPER, resize
+	gesture = 4, pinch, fullscreen
+    }
 
 # ----------------- General -----------------
 general {
-    gaps_in        = 5
-    gaps_out       = 20
-    border_size    = 1
-    col.active_border = rgba(255,255,255,128)
-    col.inactive_border = rgba(586e75ff)
-    layout         = dwindle
-    allow_tearing  = false
-    resize_on_border = false
+#    gaps_in        = 2
+#    gaps_out       = 10
+    border_size    = 0
+    #col.active_border   = rgba(A65D2Aff)
+    #col.inactive_border = rgba(586e75ff)
+#    layout         = dwindle
+#    allow_tearing  = true
+#    resize_on_border = false
 }
 
 # ----------------- Decoration -----------------
 decoration {
-    rounding = 8
+    rounding = 10
 
     active_opacity = 0.9
     inactive_opacity = 0.7
@@ -84,80 +82,35 @@ decoration {
     dim_inactive = true
     dim_strength = 0.1
     dim_special = 0.8
-
+    
   shadow {
-    enabled = true
-    range = 30
-    render_power = 5
+    enabled = false
+    range = 3
+    render_power = 1
   }
 
 
   blur {
-    enabled = true
+    enabled = false	
     size = 6
     passes = 2
     ignore_opacity = true
     new_optimizations = true
     special = true
     popups = true
-  }
+  }           
 }
 
 # ----------------- Animations -----------------
-#animations {
-#    enabled = true
-#    bezier = linear, 0, 0, 1, 1
-#    bezier = md3_standard, 0.2, 0, 0, 1
-#    bezier = md3_decel, 0.05, 0.7, 0.1, 1
-#    bezier = md3_accel, 0.3, 0, 0.8, 0.15
-#    bezier = overshot, 0.05, 0.9, 0.1, 1.1
-#    bezier = crazyshot, 0.1, 1.5, 0.76, 0.92
-#    bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
-#    bezier = fluent_decel, 0.1, 1, 0, 1
-#    bezier = easeInOutCirc, 0.85, 0, 0.15, 1
-#    bezier = easeOutCirc, 0, 0.55, 0.45, 1
-#    bezier = easeOutExpo, 0.16, 1, 0.3, 1
-#    animation = windows, 1, 3, md3_decel, popin 60%
-#    animation = border, 1, 10, default
-#    animation = fade, 1, 2.5, md3_decel
-#    animation = workspaces, 1, 3.5, easeOutExpo, slide
-#    animation = specialWorkspace, 1, 3, md3_decel, slidevert
-#}
-
 animations {
     enabled = true
-    bezier = wind, 0.05, 0.85, 0.03, 0.97
-    bezier = winIn, 0.07, 0.88, 0.04, 0.99
-    bezier = winOut, 0.20, -0.15, 0, 1
-    bezier = liner, 1, 1, 1, 1
-    bezier = md3_standard, 0.12, 0, 0, 1
-    bezier = md3_decel, 0.05, 0.80, 0.10, 0.97
-    bezier = md3_accel, 0.20, 0, 0.80, 0.08
-    bezier = overshot, 0.05, 0.85, 0.07, 1.04
-    bezier = crazyshot, 0.1, 1.22, 0.68, 0.98
-    bezier = hyprnostretch, 0.05, 0.82, 0.03, 0.94
-    bezier = menu_decel, 0.05, 0.82, 0, 1
-    bezier = menu_accel, 0.20, 0, 0.82, 0.10
-    bezier = easeInOutCirc, 0.75, 0, 0.15, 1
-    bezier = easeOutCirc, 0, 0.48, 0.38, 1
-    bezier = easeOutExpo, 0.10, 0.94, 0.23, 0.98
-    bezier = softAcDecel, 0.20, 0.20, 0.15, 1
-    bezier = md2, 0.30, 0, 0.15, 1
-
-    bezier = OutBack, 0.28, 1.40, 0.58, 1
-    bezier = easeInOutCirc, 0.78, 0, 0.15, 1
-
-    animation = border, 1, 1.6, liner
-    animation = windowsIn, 1, 3.2, winIn, slide
-    animation = windowsOut, 1, 2.8, easeOutCirc
-    animation = windowsMove, 1, 3.0, wind, slide
-    animation = fade, 1, 1.8, md3_decel
-    animation = layersIn, 1, 1.8, menu_decel, slide
-    animation = layersOut, 1, 1.5, menu_accel
-    animation = fadeLayersIn, 1, 1.6, menu_decel
-    animation = fadeLayersOut, 1, 1.8, menu_accel
-    animation = workspaces, 1, 4.0, menu_decel, slide
-    animation = specialWorkspace, 1, 2.3, md3_decel, slidefadevert 15%
+    bezier   = myBezier, 0.05, 0.9, 0.1, 1.05
+    animation = windows,     1, 7, myBezier
+    animation = windowsOut,  1, 7, default, popin 80%
+    animation = border,      1, 10, default
+    animation = borderangle, 1, 8, default
+    animation = fade,        1, 7, default
+    animation = workspaces,  1, 6, default
 }
 
 # ----------------- Layouts -----------------
@@ -175,25 +128,25 @@ master {
 }
 
 # ----------------- Window rules -----------------
-windowrulev2 = tile, class:(.*)
-windowrulev2 = tile, title:(.*)
-windowrulev2 = float,      class:^(steam_app_.*)$
-windowrulev2 = fullscreen,  class:^(steam_app_.*)$
-windowrulev2 = float,      class:^(.*\.exe)$
-windowrulev2 = fullscreen,  class:^(.*\.exe)$
-windowrulev2 = noshadow,   class:^(steam)$
+#windowrulev2 = tile, class:(.*)
+#windowrulev2 = tile, title:(.*)
+#windowrulev2 = float,      class:^(steam_app_.*)$
+#windowrulev2 = fullscreen,  class:^(steam_app_.*)$
+#windowrulev2 = float,      class:^(.*\.exe)$
+#windowrulev2 = fullscreen,  class:^(.*\.exe)$
+#windowrulev2 = noshadow,   class:^(steam)$
 
 # ----------------- XWayland -----------------
 xwayland {
     enabled            = true
-    force_zero_scaling = true
+#    force_zero_scaling = true
 }
 
 # ----------------- Keybindings -----------------
 $mainMod = SUPER
 bind = $mainMod, RETURN, exec, foot
 bind = $mainMod, D,      exec, rofi -show drun
-bind = $mainMod, E,      exec, nautilus
+bind = $mainMod, E,      exec, pcmanfm
 bind = $mainMod, V,      exec, virt‑manager
 bind = $mainMod, C,      exec, code
 bind = $mainMod, L,      exec, swaylock -c 000000
