@@ -77,7 +77,7 @@
     <cornerRadius>0</cornerRadius>
     <name>MyTheme</name>
     <titlebar>
-      <layout>:</layout>
+      <!-- <layout>:</layout> -->
       <showTitle>yes</showTitle>
     </titlebar>
   </theme>
